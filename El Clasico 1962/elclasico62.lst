@@ -1,0 +1,592 @@
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 1
+
+
+    1                   El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025
+    2                   
+    3       730000      	ioh=iot i
+    4       640500      	szm=sza sma-szf
+    5                   
+    6                   define swpXY
+    7                   	rcl 9s
+    8                   	rcl 9s
+    9                   	terminate
+   10                   
+   11                   define drawPix YPOS, XPOS
+   12                   	law XPOS
+   13                   	add posY
+   14                   	sal 8s
+   15                   	swpXY
+   16                   
+   17                   	law YPOS
+   18                   	add posX
+   19                   	sal 8s
+   20                   
+   21                   	dpy-i 300
+   22                   	ioh
+   23                   	terminate
+   24                   
+   25                   define drawBallCircle Y, X
+   26                   	drawPix 0, 1
+   27                   	drawPix 0, 3
+   28                   	drawPix 4, 1
+   29                   	drawPix 4, 3
+   30                   	drawPix 1, 0
+   31                   	drawPix 1, 3
+   32                   	drawPix 1, 4
+   33                   	drawPix 3, 4
+   34                   	terminate
+   35                   
+   36                   define drwRMpad RMX, RMY
+   37                   	lac padW
+   38                   	cma
+   39                   	dac pad1Ctr
+   40                   rmpLP,
+   41                   	lac RMY
+   42                   	add padW
+   43                   	add pad1Ctr
+   44                   	sal 8s
+   45                   	swpXY
+   46                   
+   47                   	lac RMX
+   48                   	dpy-i 300
+   49                   	ioh
+   50                   
+   51                   	law 2
+   52                   	add pad1Ctr
+   53                   	dac pad1Ctr
+   54                   	isp pad1Ctr
+   55                   
+   56                   	jmp rmpLP+R
+   57                   	terminate
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 2
+
+
+   58                   
+   59                   define drwFCBpad FCBX, FCBY
+   60                   	lac padW
+   61                   	cma
+   62                   	dac pad1Ctr
+   63                   fcbLP,
+   64                   	lac FCBY
+   65                   	add padW
+   66                   	add pad1Ctr
+   67                   	sal 8s
+   68                   	swpXY
+   69                   
+   70                   	lac FCBX
+   71                   	dpy-i 300
+   72                   	ioh
+   73                   
+   74                   	law 7
+   75                   	add pad1Ctr
+   76                   	dac pad1Ctr
+   77                   	isp pad1Ctr
+   78                   
+   79                   	jmp fcbLP+R
+   80                   	terminate
+   81                   
+   82                   define drawNet NLINE, NX
+   83                   	law 0
+   84                   	sub bottomScreen
+   85                   	sub bottomScreen
+   86                   	dac pad1Ctr
+   87                   netLoop,
+   88                   	lac pad1Ctr
+   89                   	add bottomScreen
+   90                   	sal 9s
+   91                   	swpXY
+   92                   	law NX
+   93                   	dpy
+   94                   	ioh
+   95                   
+   96                   	law 25
+   97                   	add pad1Ctr
+   98                   	dac pad1Ctr
+   99                   	isp pad1Ctr
+  100                   	jmp netLoop+R
+  101                   	terminate
+  102                   
+  103                   / Game main loop starts at 500/
+  104 00500             500/
+  105                   gameLoop,
+  106                   	drawBallCircle
+      00500 700001
+      00501 401156
+      00502 665377
+      00503 663777
+      00504 663777
+      00505 700000
+      00506 401155
+      00507 665377
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 3
+
+
+      00510 720307
+      00511 730000
+      00512 700003
+      00513 401156
+      00514 665377
+      00515 663777
+      00516 663777
+      00517 700000
+      00520 401155
+      00521 665377
+      00522 720307
+      00523 730000
+      00524 700001
+      00525 401156
+      00526 665377
+      00527 663777
+      00530 663777
+      00531 700004
+      00532 401155
+      00533 665377
+      00534 720307
+      00535 730000
+      00536 700003
+      00537 401156
+      00540 665377
+      00541 663777
+      00542 663777
+      00543 700004
+      00544 401155
+      00545 665377
+      00546 720307
+      00547 730000
+      00550 700000
+      00551 401156
+      00552 665377
+      00553 663777
+      00554 663777
+      00555 700001
+      00556 401155
+      00557 665377
+      00560 720307
+      00561 730000
+      00562 700003
+      00563 401156
+      00564 665377
+      00565 663777
+      00566 663777
+      00567 700001
+      00570 401155
+      00571 665377
+      00572 720307
+      00573 730000
+      00574 700004
+      00575 401156
+      00576 665377
+      00577 663777
+      00600 663777
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 4
+
+
+      00601 700001
+      00602 401155
+      00603 665377
+      00604 720307
+      00605 730000
+      00606 700004
+      00607 401156
+      00610 665377
+      00611 663777
+      00612 663777
+      00613 700003
+      00614 401155
+      00615 665377
+      00616 720307
+      00617 730000
+  107 00620 201155      	lac posX
+  108 00621 401157      	add velX
+  109 00622 241155      	dac posX
+  110 00623 621117      	jsp checkX
+  111                   
+  112 00624 201156      	lac posY
+  113 00625 401160      	add velY
+  114 00626 241156      	dac posY
+  115 00627 621135      	jsp checkY
+  116                   
+  117                   	drwRMpad leftX, rmY
+      00630 201173
+      00631 761000
+      00632 241167
+      00633 201165
+      00634 401173
+      00635 401167
+      00636 665377
+      00637 663777
+      00640 663777
+      00641 201171
+      00642 720307
+      00643 730000
+      00644 700002
+      00645 401167
+      00646 241167
+      00647 461167
+      00650 600633
+  118                   	drwFCBpad rightX, fcbY
+      00651 201173
+      00652 761000
+      00653 241167
+      00654 201166
+      00655 401173
+      00656 401167
+      00657 665377
+      00660 663777
+      00661 663777
+      00662 201172
+      00663 720307
+      00664 730000
+      00665 700007
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 5
+
+
+      00666 401167
+      00667 241167
+      00670 461167
+      00671 600654
+  119                   
+  120 00672 620715      	jsp updatePads
+  121                   
+  122                   	drawNet 0, 0
+      00673 700000
+      00674 421177
+      00675 421177
+      00676 241167
+      00677 201167
+      00700 401177
+      00701 665777
+      00702 663777
+      00703 663777
+      00704 700000
+      00705 730007
+      00706 730000
+      00707 700025
+      00710 401167
+      00711 241167
+      00712 461167
+      00713 600677
+  123 00714 600500      	jmp gameLoop
+  124                   
+  125                   define keyTest KEY, JMPLOC
+  126                   	lac keyState
+  127                   	and KEY
+  128                   	sza
+  129                   	jmp JMPLOC
+  130                   	terminate
+  131                   
+  132                   define movePaddle PADY, MOVFUNC
+  133                   	lac PADY
+  134                   	dac padTempY
+  135                   	jsp MOVFUNC
+  136                   	lac padTempY
+  137                   	dac PADY
+  138                   	terminate
+  139                   
+  140                   updatePads,
+  141 00715 260765      	dap retMove
+  142 00716 764000      	cli
+  143 00717 720011      	iot 11
+  144 00720 321170      	dio keyState
+  145                   
+  146                   upRM,
+  147                   	keyTest keyUpRM, upFCB
+      00721 201170
+      00722 021210
+      00723 640100
+      00724 600732
+  148                   	movePaddle rmY, mvUp
+      00725 201165
+      00726 241164
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 6
+
+
+      00727 620766
+      00730 201164
+      00731 241165
+  149                   
+  150                   upFCB,
+  151                   	keyTest keyUpFCB, downRM
+      00732 201170
+      00733 021206
+      00734 640100
+      00735 600743
+  152                   	movePaddle fcbY, mvUp
+      00736 201166
+      00737 241164
+      00740 620766
+      00741 201164
+      00742 241166
+  153                   
+  154                   downRM,
+  155                   	keyTest keyDownRM, downFCB
+      00743 201170
+      00744 021207
+      00745 640100
+      00746 600754
+  156                   	movePaddle rmY, mvDown
+      00747 201165
+      00750 241164
+      00751 621001
+      00752 201164
+      00753 241165
+  157                   
+  158                   downFCB,
+  159                   	keyTest keyFCBDown, retMove
+      00754 201170
+      00755 021205
+      00756 640100
+      00757 600765
+  160                   	movePaddle fcbY, mvDown
+      00760 201166
+      00761 241164
+      00762 621001
+      00763 201164
+      00764 241166
+  161                   
+  162                   retMove,
+  163 00765 600765      	jmp .
+  164                   
+  165                   define flipDir DIR
+  166                   	lac DIR
+  167                   	cma
+  168                   	dac DIR
+  169                   	terminate
+  170                   
+  171                   mvUp,
+  172 00766 261000      	dap retUp
+  173 00767 201164      	lac padTempY
+  174 00770 421203      	sub padTopLimit
+  175 00771 640400      	sma
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 7
+
+
+  176 00772 601000      	jmp retUp
+  177 00773 201164      	lac padTempY
+  178 00774 401162      	add padOffset
+  179 00775 241164      	dac padTempY
+  180                   
+  181 00776 401163      	add randVal
+  182 00777 241163      	dac randVal
+  183                   retUp,
+  184 01000 601000      	jmp .
+  185                   
+  186                   mvDown,
+  187 01001 261013      	dap retDown
+  188 01002 201164      	lac padTempY
+  189 01003 401204      	add padBotLimit
+  190 01004 640200      	spa
+  191 01005 601013      	jmp retDown
+  192 01006 201164      	lac padTempY
+  193 01007 421162      	sub padOffset
+  194 01010 241164      	dac padTempY
+  195                   
+  196 01011 401163      	add randVal
+  197 01012 241163      	dac randVal
+  198                   retDown,
+  199 01013 601013      	jmp .
+  200                   
+  201                   doDelay,
+  202 01014 261021      	dap retDelay
+  203 01015 201211      	lac delaySet
+  204 01016 241212      	dac delayCnt
+  205                   delayLoop,
+  206 01017 461212      	isp delayCnt
+  207 01020 601017      	jmp delayLoop
+  208                   retDelay,
+  209 01021 601021      	jmp .
+  210                   
+  211                   ballRestart,
+  212 01022 621014      	jsp doDelay
+  213 01023 441161      	idx resetCount
+  214                   
+  215 01024 201163      	lac randVal
+  216 01025 021201      	and dyMask
+  217 01026 401175      	add const1
+  218 01027 241160      	dac velY
+  219                   
+  220 01030 760200      	cla
+  221 01031 241155      	dac posX
+  222                   
+  223 01032 201163      	lac randVal
+  224 01033 021202      	and yMask
+  225 01034 421177      	sub bottomScreen
+  226 01035 241156      	dac posY
+  227                   
+  228 01036 201161      	lac resetCount
+  229 01037 021175      	and const1
+  230 01040 640100      	sza
+  231 01041 601050      	jmp rightRestart
+  232                   
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 8
+
+
+  233                   leftRestart,
+  234 01042 700002      	law 2
+  235 01043 761000      	cma
+  236 01044 241157      	dac velX
+  237 01045 401200      	add screenEdge
+  238 01046 241155      	dac posX
+  239 01047 601116      	jmp retCheck
+  240                   
+  241                   rightRestart,
+  242 01050 700002      	law 2
+  243 01051 241157      	dac velX
+  244 01052 421200      	sub screenEdge
+  245 01053 241155      	dac posX
+  246 01054 601116      	jmp retCheck
+  247                   
+  248                   onPaddleHit,
+  249 01055 261116      	dap retCheck
+  250 01056 201156      	lac posY
+  251 01057 421164      	sub padTempY
+  252 01060 421175      	sub const1
+  253 01061 640200      	spa
+  254 01062 601022      	jmp ballRestart
+  255                   
+  256 01063 421173      	sub padW
+  257 01064 640400      	sma
+  258 01065 601022      	jmp ballRestart
+  259                   
+  260                   	flipDir velX
+      01066 201157
+      01067 761000
+      01070 241157
+  261 01071 441213      	idx hitCtr
+  262                   
+  263 01072 201157      	lac velX
+  264 01073 640200      	spa
+  265 01074 601103      	jmp skipSpeedUp
+  266                   
+  267 01075 700003      	law 3
+  268 01076 421213      	sub hitCtr
+  269 01077 640200      	spa
+  270 01100 441157      	idx velX
+  271 01101 640200      	spa
+  272 01102 341213      	dzm hitCtr
+  273                   skipSpeedUp,
+  274 01103 201164      	lac padTempY
+  275 01104 401174      	add padHalf
+  276 01105 421156      	sub posY
+  277 01106 640200      	spa
+  278 01107 761000      	cma
+  279 01110 675017      	sar 4s
+  280 01111 401175      	add const1
+  281                   
+  282 01112 221160      	lio velY
+  283 01113 642000      	spi
+  284 01114 761000      	cma
+  285                   
+  286 01115 241160      	dac velY
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025     Page 9
+
+
+  287                   retCheck,
+  288 01116 601116      	jmp .
+  289                   
+  290                   checkX,
+  291 01117 261134      	dap retCX
+  292 01120 201165      	lac rmY
+  293 01121 241164      	dac padTempY
+  294 01122 201155      	lac posX
+  295 01123 401176      	add rightScreen
+  296 01124 640200      	spa
+  297 01125 621055      	jsp onPaddleHit
+  298                   
+  299 01126 201166      	lac fcbY
+  300 01127 241164      	dac padTempY
+  301 01130 201155      	lac posX
+  302 01131 421176      	sub rightScreen
+  303 01132 640400      	sma
+  304 01133 621055      	jsp onPaddleHit
+  305                   retCX,
+  306 01134 601134      	jmp .
+  307                   
+  308                   checkY,
+  309 01135 261154      	dap retCY
+  310 01136 201156      	lac posY
+  311 01137 401177      	add bottomScreen
+  312 01140 640200      	spa
+  313 01141 601145      	jmp yCont
+  314                   	flipDir velY
+      01142 201160
+      01143 761000
+      01144 241160
+  315                   
+  316                   yCont,
+  317 01145 201156      	lac posY
+  318 01146 421177      	sub bottomScreen
+  319 01147 640400      	sma
+  320 01150 601154      	jmp retCY
+  321                   	flipDir velY
+      01151 201160
+      01152 761000
+      01153 241160
+  322                   retCY,
+  323 01154 601154      	jmp .
+  324                   
+  325                   //////////////////////////////////////////////////////////////////////////////////////////////  326                   //
+  327                   
+  328                   / Position and movement
+  329 01155 000700      posX,		000700
+  330 01156 000000      posY,		000000
+  331                   
+  332 01157 777774      velX,		777774
+  333 01160 000003      velY,		000003
+  334                   
+  335 01161 000000      resetCount,	000000
+  336                   
+  337 01162 000004      padOffset,	000004
+
+      El Clasico 1962, written by Tolulope Oshinowo & Dwaha Daud, 04/2025    Page 10
+
+
+  338 01163 000001      randVal,	000001
+  339 01164 000000      padTempY,	000000
+  340                   
+  341 01165 000000      rmY,		000000
+  342 01166 000000      fcbY,		000000
+  343                   
+  344 01167 000000      pad1Ctr,	000000
+  345 01170 000000      keyState,	000000
+  346                   
+  347 01171 400400      leftX,		400400
+  348 01172 374000      rightX,		374000
+  349                   
+  350 01173 000120      padW,		000120
+  351 01174 000064      padHalf,	000064
+  352                   
+  353 01175 000001      const1,		000001
+  354                   
+  355 01176 000764      rightScreen, 000764
+  356 01177 000764      bottomScreen,   000764
+  357                   
+  358 01200 000500      screenEdge,	000500
+  359 01201 000003      dyMask,		000003
+  360 01202 000777      yMask,		000777
+  361                   
+  362 01203 000562      padTopLimit, 000562
+  363 01204 000760      padBotLimit, 000760
+  364                   
+  365 01205 000001      keyFCBDown,  000001
+  366 01206 000002      keyUpFCB,	000002
+  367                   
+  368 01207 040000      keyDownRM,	040000
+  369 01210 100000      keyUpRM, 	100000
+  370                   
+  371 01211 770000      delaySet,	770000
+  372 01212 000000      delayCnt,	000000
+  373 01213 000000      hitCtr,		000000
+  374                   
+  375       000500      	start 500
+
+      No errors detected

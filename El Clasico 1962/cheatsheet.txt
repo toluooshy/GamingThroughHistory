@@ -1,0 +1,63 @@
+; ---------- Control Flow ----------
+; jmp LABEL       = Jump: Unconditional jump to the label LABEL.
+; jsp LABEL       = Jump to Subroutine: Calls subroutine at LABEL, stores return address.
+; dap LABEL       = Define Address Point: Marks the return label for subroutine call.
+; idx VAR         = Increment VAR by 1. Commonly used for counters.
+; terminate       = End of Subroutine: Ends a subroutine (equivalent to jmp .).
+; jmp LABEL+R     = Jump Relative Return: Likely jumps to return address from jsp.
+
+; ---------- Memory and Registers ----------
+; lac VAR         = Load Accumulator: Load VAR's value into the accumulator.
+; dac VAR         = Deposit Accumulator: Store accumulator value into VAR.
+; law IMM         = Load Accumulator with Immediate: Set accumulator to constant value IMM.
+; lio VAR         = Load I/O: Load value into I/O register (non-destructive to accumulator).
+; dio VAR         = Deposit I/O: Write value from I/O register into memory location VAR.
+; cla             = Clear Accumulator: Set accumulator to 0.
+; cma             = Complement Accumulator: Inverts all bits (two's complement).
+; sar Ns          = Shift Arithmetic Right Ns bits: Divide accumulator while keeping sign.
+; sal Ns          = Shift Arithmetic Left Ns bits: Multiply accumulator by 2ⁿ.
+; rcl VAR         = Recall VAR: Macro to load VAR twice, may simulate timing or I/O delay.
+
+; ---------- Arithmetic & Logic ----------
+; add VAR         = Add: Add value of VAR to accumulator.
+; sub VAR         = Subtract: Subtract VAR from accumulator.
+; and VAR         = Bitwise AND: Perform AND operation between VAR and accumulator.
+
+; ---------- Comparisons & Skips ----------
+; sma             = Skip if Minus: Skip next instruction if accumulator is negative.
+; spa             = Skip if Positive: Skip next instruction if accumulator is ≥ 0.
+; sza             = Skip if Zero: Skip next instruction if accumulator == 0.
+; isp VAR         = Increment and Skip if Positive: Increment VAR and skip if result > 0.
+; szm             = Skip if Memory Zero: Skips if a memory location equals 0. (Assumed macro)
+; dzm VAR         = Deposit Zero in Memory: Clears variable VAR by storing 0.
+
+; ---------- Display / Graphics ----------
+; dpy             = Display Pixel: Draw pixel using coordinate from accumulator and I/O.
+; dpy-i IMM       = Display with Intensity/Mode: Draw with intensity/mode (e.g. 300).
+; ioh             = I/O Hold or Commit: Locks in output, used after dpy.
+; iot IMM         = Input/Output Transfer: I/O instruction for device IMM (e.g., controller).
+; cli             = Clear I/O: Clears input register before receiving controller state.
+
+; ---------- Custom Macros / Game Logic ----------
+; define NAME ...= Macro/Subroutine Definition Block.
+; swap            = Swap: Defined as double rcl 9s. Likely toggles coordinates or state.
+; point A, B      = Draw a single point at (A+x, B+y).
+; circle A, B     = Draw 5-dot "ball" using multiple point calls.
+; paddle X, Y     = Draw vertical paddle at position (X, Y) using repeated dpy-i.
+; line C, D       = Draw dashed vertical net line at screen center.
+; testkey K, N    = Tests if key K was pressed. If NOT pressed, jump to label N.
+; padmove Y, A    = Paddle Movement Logic: Call A (mvup/mvdown) and update Y.
+; flip VAR        = Flip Sign: Negates VAR using complement.
+; delay           = Time Delay Loop using countdown.
+; restart         = Resets ball to center and randomizes angle/speed after a miss.
+; hitpaddle       = Handles paddle collision: Reflects ball, adds spin, increases speed.
+; checkx          = Checks horizontal bounds and paddle collisions.
+; checky          = Checks vertical bounds and flips vertical direction if necessary.
+
+; ============================================================
+; Usage Notes:
+; - Coordinates are generally signed integers (center is around x=0, y=0).
+; - Paddle and ball sizes are handled with offsets like `pdlwidth`, `padoff`.
+; - dy and dx store velocity and change based on collisions and angles.
+; - "random" is used to add some variation to the ball's angle.
+; ============================================================
