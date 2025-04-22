@@ -1,0 +1,108 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonUnityNetworking.csproj": {}
+  },
+  "projects": {
+    "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonRealtime.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonRealtime.csproj",
+        "projectName": "PhotonRealtime",
+        "projectPath": "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonRealtime.csproj",
+        "packagesPath": "/Users/tolu/.nuget/packages/",
+        "outputPath": "/Users/tolu/GamingThroughHistory/El Clasico Forever/Temp/obj/PhotonRealtime/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/tolu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonUnityNetworking.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonUnityNetworking.csproj",
+        "projectName": "PhotonUnityNetworking",
+        "projectPath": "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonUnityNetworking.csproj",
+        "packagesPath": "/Users/tolu/.nuget/packages/",
+        "outputPath": "/Users/tolu/GamingThroughHistory/El Clasico Forever/Temp/obj/PhotonUnityNetworking/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/tolu/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {
+              "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonRealtime.csproj": {
+                "projectPath": "/Users/tolu/GamingThroughHistory/El Clasico Forever/PhotonRealtime.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

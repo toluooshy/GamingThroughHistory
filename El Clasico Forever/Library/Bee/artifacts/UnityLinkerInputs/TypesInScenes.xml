@@ -3,9 +3,9 @@
 		<type fullname="BallController" preserve="nothing"/>
 		<type fullname="ConnectToServer" preserve="nothing"/>
 		<type fullname="CreateAndJoinRooms" preserve="nothing"/>
+		<type fullname="GameController" preserve="nothing"/>
 		<type fullname="MenuManager" preserve="nothing"/>
 		<type fullname="PlayerController" preserve="nothing"/>
-		<type fullname="SpawnPlayers" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="PhotonUnityNetworking.Demos">
 		<type fullname="Photon.Pun.Demo.Asteroids.Asteroid" preserve="nothing"/>
@@ -57,6 +57,7 @@
 		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerPanel" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerPersistentCanvas" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerProgressBar" preserve="nothing"/>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerRenderingLayerField" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerRow" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerToggle" preserve="nothing"/>
 		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerToggleHistory" preserve="nothing"/>

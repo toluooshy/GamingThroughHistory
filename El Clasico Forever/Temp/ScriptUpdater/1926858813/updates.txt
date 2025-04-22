@@ -1,3 +1,0 @@
-Temp/ScriptUpdater/1926858813/1288032821_Bullet.cs => Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/Bullet.cs
-Temp/ScriptUpdater/1926858813/1099538221_ThirdPersonCharacter.cs => Assets/Photon/PhotonUnityNetworking/Demos/Shared Assets/Scripts/ThirdPersonCharacter.cs
-Temp/ScriptUpdater/1926858813/1176713116_Spaceship.cs => Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scripts/Game/Spaceship.cs

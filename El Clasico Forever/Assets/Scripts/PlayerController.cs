@@ -3,52 +3,61 @@ using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
-    public float yPlane = 1f; // Fixed Y level the player moves on
-    public float worldUnitsPerPixel = 0.01f; // Conversion scale from screen pixels to world units
+    public float yPlane = 1.25f;
 
-    private Vector3 inputStartWorldPos;
-    private Vector2 inputStartScreenPos;
-    private bool isDragging = false;
-
-    PhotonView view;
+    private Vector3 spawnPosition;
+    private PhotonView view;
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         view = GetComponent<PhotonView>();
+
+        if (view.IsMine)
+        {
+            spawnPosition = transform.position;
+            SetupCamera();
+        }
     }
 
     void Update()
     {
-        if(view.IsMine) {
-            if (Input.GetMouseButtonDown(0))
+        if (!view.IsMine) return;
+
+        if (Input.GetMouseButton(0))
+        {
+            Plane movementPlane = new Plane(Vector3.up, new Vector3(0, yPlane, 0));
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (movementPlane.Raycast(ray, out float enter))
             {
-                inputStartScreenPos = Input.mousePosition;
-                inputStartWorldPos = transform.position;
-                isDragging = true;
-            }
+                Vector3 hitPoint = ray.GetPoint(enter);
 
-            if (Input.GetMouseButton(0) && isDragging)
-            {
-                Vector2 currentScreenPos = Input.mousePosition;
-                Vector2 screenDelta = currentScreenPos - inputStartScreenPos;
+                Vector3 clampedTargetPos = new Vector3(
+                    Mathf.Clamp(hitPoint.x, spawnPosition.x - 2.4f, spawnPosition.x + 2.4f),
+                    yPlane,
+                    Mathf.Clamp(hitPoint.z, spawnPosition.z < 0 ? -14f : 1, spawnPosition.z < 0 ? -1 : 14f)
+                );
 
-                // Convert screen delta to world space movement on XZ plane
-                Vector3 worldDelta = new Vector3(screenDelta.x, 0f, screenDelta.y) * worldUnitsPerPixel;
-
-                Vector3 targetPos = inputStartWorldPos;
-                if ((targetPos + worldDelta).x > -3 && (targetPos + worldDelta).x < 3 && (targetPos + worldDelta).z < 0)
-                {
-                    targetPos += worldDelta;
-                }
-                targetPos.y = yPlane;
-
-                transform.position = targetPos;
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                isDragging = false;
+                rb.MovePosition(clampedTargetPos);
             }
         }
+    }
+
+    private void SetupCamera()
+    {
+        Camera mainCam = Camera.main;
+
+        if (!mainCam) return;
+
+        Vector3 camOffset;
+        float zDirection = Mathf.Sign(spawnPosition.z);
+
+        camOffset = new Vector3(0f, 10f, zDirection * 11f); // Keep camera behind player
+        mainCam.transform.position = spawnPosition + camOffset;
+
+        float xAngle = 25f;
+        mainCam.transform.rotation = Quaternion.Euler(xAngle, zDirection == 1 ? 180f : 0f, 0f);
     }
 }

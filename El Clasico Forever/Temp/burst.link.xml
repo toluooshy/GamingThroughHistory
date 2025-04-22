@@ -33,10 +33,10 @@
    <method name="GetWorkStealingRange"/>
   </type>
   <type fullname="Unity.Collections.LowLevel.Unsafe.UnsafeUtility">
-   <method name="FreeTracked"/>
+   <method name="MallocTracked"/>
   </type>
   <type fullname="Unity.Collections.LowLevel.Unsafe.UnsafeUtility">
-   <method name="MallocTracked"/>
+   <method name="FreeTracked"/>
   </type>
   <type fullname="UnityEngine.U2D.Clipper2D">
    <method name="Internal_Execute_Cleanup"/>
@@ -51,7 +51,7 @@
    <method name="Internal_Execute_Injected"/>
   </type>
   <type fullname="UnityEngine.Rendering.GPUDrivenProcessor">
-   <method name="FindUnsupportedMaterialsImpl_Injected"/>
+   <method name="ClassifyMaterialsImpl_Injected"/>
   </type>
   <type fullname="UnityEngine.Rendering.BatchRendererGroup">
    <method name="OcclusionTestAABB_Injected"/>

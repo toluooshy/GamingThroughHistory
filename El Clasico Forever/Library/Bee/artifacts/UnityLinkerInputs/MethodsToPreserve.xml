@@ -4,6 +4,9 @@
 			<method name="CreateRoom"/>
 			<method name="JoinRoom"/>
 		</type>
+		<type fullname="GameController">
+			<method name="ReturnToMenu"/>
+		</type>
 		<type fullname="MenuManager">
 			<method name="PlayGame"/>
 		</type>

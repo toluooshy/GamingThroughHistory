@@ -1,2 +1,0 @@
-Temp/ScriptUpdater/1498087307/58418524_PhotonRigidbody2DView.cs => Assets/Photon/PhotonUnityNetworking/Code/Views/PhotonRigidbody2DView.cs
-Temp/ScriptUpdater/1498087307/1318373097_PhotonRigidbodyView.cs => Assets/Photon/PhotonUnityNetworking/Code/Views/PhotonRigidbodyView.cs
