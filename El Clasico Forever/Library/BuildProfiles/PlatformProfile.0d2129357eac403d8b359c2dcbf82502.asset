@@ -17,7 +17,7 @@ MonoBehaviour:
   m_Subtarget: 2
   m_PlatformId: 0d2129357eac403d8b359c2dcbf82502
   m_PlatformBuildProfile:
-    rid: 4616270305661812738
+    rid: 5183502575870935040
   m_OverrideGlobalSceneList: 0
   m_Scenes: []
   m_ScriptingDefines: []
@@ -26,10 +26,10 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 4616270305661812738
+    - rid: 5183502575870935040
       type: {class: OSXStandaloneBuildProfile, ns: UnityEditor.OSXStandalone, asm: UnityEditor.OSXStandalone.Extensions}
       data:
-        m_Development: 1
+        m_Development: 0
         m_ConnectProfiler: 0
         m_BuildWithDeepProfilingSupport: 0
         m_AllowDebugging: 0

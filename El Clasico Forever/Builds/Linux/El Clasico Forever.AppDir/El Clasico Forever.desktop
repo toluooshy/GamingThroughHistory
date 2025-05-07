@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=El Clasico Forever
+Exec=El Clasico Forever.x86_64
+Icon=gameicon
+StartupWMClass=El Clasico Forever.x86_64
+Type=Application
+Categories=Game;

@@ -1,0 +1,4 @@
+#!/bin/bash
+HERE="$(dirname "$(readlink -f "$0")")"
+GAME="$HERE/El Clasico Forever.x86_64"
+exec "$GAME"

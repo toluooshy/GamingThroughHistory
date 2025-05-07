@@ -1,9 +1,8 @@
+using Photon.Pun;
 using UnityEngine;
 
-public class BallController : MonoBehaviour
+public class BallController : MonoBehaviourPunCallbacks
 {
-    public GameObject GameController;
-
     public GameObject homeGoal;
     public GameObject awayGoal;
 
@@ -14,21 +13,59 @@ public class BallController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        // Only the master client controls the ball's clamped movement
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Vector3 pos = transform.position;
+
+            if (pos.x < -3.6f)
+            {
+                pos.x = -2.5f;
+                rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, rb.linearVelocity.z);
+                transform.position = pos;
+            }
+            else if (pos.x > 3.6f)
+            {
+                pos.x = 2.5f;
+                rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, rb.linearVelocity.z);
+                transform.position = pos;
+            }
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == homeGoal)
+        if (!PhotonNetwork.IsMasterClient) return;
+
+        GameSceneController controller = GameObject.FindGameObjectWithTag("GameSceneController").GetComponent<GameSceneController>();
+
+        if (controller.homeSkin == 1)
         {
-            // Away team scores
-            GameController.GetComponent<GameController>().awayScore++;
-            Debug.Log("Away Team Scores! Total: " + GameController.GetComponent<GameController>().awayScore);
-            ResetBall();
+            if (other.CompareTag("AwayGoal"))
+            {
+                controller.IncrementAwayScore();
+                ResetBall();
+            }
+            else if (other.CompareTag("HomeGoal"))
+            {
+                controller.IncrementHomeScore();
+                ResetBall();
+            }
         }
-        else if (other.gameObject == awayGoal)
+        else
         {
-            // Home team scores
-            GameController.GetComponent<GameController>().homeScore++;
-            Debug.Log("Home Team Scores! Total: " + GameController.GetComponent<GameController>().homeScore);
-            ResetBall();
+            if (other.CompareTag("AwayGoal"))
+            {
+                controller.IncrementHomeScore();
+                ResetBall();
+            }
+            else if (other.CompareTag("HomeGoal"))
+            {
+                controller.IncrementAwayScore();
+                ResetBall();
+            }
         }
     }
 
@@ -36,6 +73,6 @@ public class BallController : MonoBehaviour
     {
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        transform.position = new Vector3(0, 1, 0);
+        transform.position = new Vector3(0, 1, -0.25f);
     }
 }
